@@ -401,7 +401,7 @@ window.require.define({"scope": function(exports, require, module) {
     Scope.prototype.getCulture = function(lat, lon) {
       var pointArgument, url,
         _this = this;
-      url = "http://kn-reise.delving.org/organizations/kn-reise/api/search?query=delving_spec:kulturit&format=json&rows=50&";
+      url = "http://kn-reise.delving.org/organizations/kn-reise/api/search?query=delving_spec:kulturit&qf=europeana_dataProvider_facet:Oslo%20Museum&qf=dc_type_facet:StillImage&format=json&rows=50&";
       pointArgument = "pt=" + lat + "," + lon;
       url += pointArgument;
       return $.getJSON(url, function(data) {
@@ -433,7 +433,7 @@ window.require.define({"scope": function(exports, require, module) {
           console.info(item.thumbnail);
           element.appendChild(image);
           object = new THREE.CSS3DObject(element);
-          object.position.set(item.longitude * _this.scaleFactor, Math.random() * 1500, item.latitude * _this.scaleFactor, 0);
+          object.position.set(item.longitude * _this.scaleFactor, (Math.random() * 500) - 250, item.latitude * _this.scaleFactor, 0);
           _this.objects.push(object);
           _results.push(_this.scene.add(object));
         }
